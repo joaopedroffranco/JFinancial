@@ -155,7 +155,7 @@ Evitar abstrações antecipadas para múltiplos usuários, backend, sincronizaç
 A branch `main` é protegida por convenção e representa a base atual do projeto.
 
 - Nunca alterar, fazer commit ou push diretamente na `main`.
-- Nunca executar `git push` sem autorização explícita do usuário, independentemente da branch.
+- Nunca executar `git push` sem autorização explícita do usuário. Uma solicitação explícita para `mergear` já autoriza o push da `main` resultante.
 - Nunca integrar uma feature na `main` sem autorização explícita.
 - Não criar Pull Request por padrão. Criar PR somente quando o usuário solicitar explicitamente.
 - Não reescrever histórico, fazer force push ou usar comandos destrutivos sem autorização explícita.
@@ -171,8 +171,8 @@ Ao iniciar uma nova feature ou um novo chat que exija mudanças:
 6. se houver dúvida sobre reaproveitar ou criar uma branch, perguntar antes de alterar arquivos;
 7. ao concluir, apresentar resumo, arquivos modificados e estado do Git;
 8. aguardar a revisão do usuário;
-9. após aprovação explícita para integrar, fazer commit das mudanças aprovadas, rebasear a feature sobre a `main` e integrar localmente por fast-forward;
-10. não fazer push da feature nem da `main` sem autorização explícita.
+9. após aprovação explícita para integrar ou `mergear`, fazer commit das mudanças aprovadas, rebasear a feature sobre a `main`, integrar localmente por fast-forward e fazer push da `main`;
+10. não fazer push da feature branch, salvo solicitação explícita.
 
 Fluxo local esperado após a aprovação:
 
@@ -182,8 +182,10 @@ feature branch
 → rebase sobre main
 → main
 → merge --ff-only da feature
-→ aguardar autorização separada para push
+→ push da main
 ```
+
+A palavra `mergear`, quando usada pelo usuário para aprovar uma feature, inclui autorização para executar todo o fluxo acima. Não pedir uma segunda autorização específica para o push da `main`.
 
 Não criar merge commits no fluxo normal. Se o rebase produzir conflito ou se o fast-forward não for possível, interromper o fluxo e explicar a situação antes de prosseguir.
 
