@@ -1,0 +1,25 @@
+.ds-heading {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.ds-heading--display {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  letter-spacing: -0.05em;
+}
+
+.ds-heading--large {
+  font-size: var(--font-size-3xl);
+  letter-spacing: -0.03em;
+}
+
+.ds-heading--medium {
+  font-size: var(--font-size-2xl);
+  letter-spacing: -0.02em;
+}
+
+.ds-heading--small {
+  font-size: var(--font-size-xl);
+}

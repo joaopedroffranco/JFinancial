@@ -23,7 +23,14 @@
 
   --color-success: #22c55e;
   --color-warning: #f59e0b;
-  --color-danger: #ef4444;
+  --color-danger-50: #fff1f2;
+  --color-danger-100: #ffe4e6;
+  --color-danger-300: #fda4af;
+  --color-danger-500: #ef4444;
+  --color-danger-700: #b91c1c;
+  --color-danger-900: #881337;
+  --color-danger: var(--color-danger-500);
+  --color-danger-surface: rgb(239 68 68 / 12%);
   --color-info: #3b82f6;
 
   --color-background: var(--color-neutral-900);

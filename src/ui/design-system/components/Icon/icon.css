@@ -1,0 +1,18 @@
+.ds-icon {
+  display: block;
+  flex: 0 0 auto;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ds-icon--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.ds-icon--md {
+  width: 20px;
+  height: 20px;
+}

@@ -1,0 +1,23 @@
+.ds-text {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+}
+
+.ds-text--secondary {
+  color: var(--color-text-secondary);
+}
+
+.ds-text--caption {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.ds-text--eyebrow {
+  color: var(--color-primary-500);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}

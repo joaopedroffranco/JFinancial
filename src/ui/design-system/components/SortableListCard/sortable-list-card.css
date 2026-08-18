@@ -1,0 +1,72 @@
+.ds-sortable-list-card {
+  overflow: hidden;
+}
+
+.ds-sortable-list-card__scroll {
+  overflow-x: auto;
+}
+
+.ds-sortable-list-card table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.ds-sortable-list-card th,
+.ds-sortable-list-card td {
+  padding: var(--space-3) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  text-align: left;
+}
+
+.ds-sortable-list-card tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.ds-sortable-list-card th {
+  background: var(--color-surface);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ds-sortable-list-card th button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.ds-sortable-list-card th button:focus-visible {
+  border-radius: var(--radius-sm);
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.ds-sortable-list-card__cell--end {
+  text-align: right !important;
+}
+
+.ds-sortable-list-card__cell--end button {
+  margin-left: auto;
+}
+
+.ds-sortable-list-card__expanded-row td {
+  padding: var(--space-5);
+  background: var(--color-surface-subtle);
+}
+
+.ds-sortable-list-card__empty {
+  padding: var(--space-8) !important;
+  text-align: center !important;
+}
