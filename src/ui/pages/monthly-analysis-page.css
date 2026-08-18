@@ -1,0 +1,20 @@
+.monthly-analysis-page {
+  width: min(960px, 100%);
+  min-height: 100vh;
+  padding: clamp(var(--space-8), 7vw, var(--space-20));
+}
+
+.monthly-analysis-page > .ds-heading {
+  margin-top: var(--space-3);
+}
+
+.monthly-analysis-page__empty {
+  display: grid;
+  max-width: 640px;
+  gap: var(--space-3);
+  margin-top: var(--space-12);
+}
+
+.monthly-analysis-page__empty > .ds-icon {
+  color: var(--color-primary-300);
+}
