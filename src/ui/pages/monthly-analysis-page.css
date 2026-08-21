@@ -8,13 +8,26 @@
   margin-top: var(--space-3);
 }
 
-.monthly-analysis-page__empty {
+.monthly-analysis-page__metrics {
   display: grid;
-  max-width: 640px;
-  gap: var(--space-3);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
   margin-top: var(--space-12);
 }
 
-.monthly-analysis-page__empty > .ds-icon {
-  color: var(--color-primary-300);
+.monthly-analysis-page__metrics .ds-card,
+.monthly-analysis-page__pending {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.monthly-analysis-page__metrics strong { font-size: var(--font-size-xl); }
+
+.monthly-analysis-page__pending {
+  max-width: 720px;
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 760px) {
+  .monthly-analysis-page__metrics { grid-template-columns: 1fr; }
 }

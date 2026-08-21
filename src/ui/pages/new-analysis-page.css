@@ -1,0 +1,189 @@
+.new-analysis-page {
+  display: grid;
+  width: min(1080px, 100%);
+  min-height: 100vh;
+  align-content: start;
+  gap: var(--space-8);
+  padding: clamp(var(--space-8), 7vw, var(--space-20));
+}
+
+.new-analysis-page header {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.new-analysis-page__setup,
+.new-analysis-page__preview {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.new-analysis-page__period {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  gap: var(--space-4);
+}
+
+.new-analysis-page__file-heading,
+.new-analysis-page__preview-heading,
+.new-analysis-page__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.new-analysis-page__file-heading > div,
+.new-analysis-page__preview-heading > div {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.new-analysis-page__file-button {
+  display: inline-flex;
+  min-height: 42px;
+  cursor: pointer;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  color: var(--color-neutral-950);
+  background: var(--color-primary-500);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.new-analysis-page__file-button:focus-within {
+  box-shadow: var(--shadow-focus);
+}
+
+.new-analysis-page__file-button input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.new-analysis-page__error {
+  padding: var(--space-3);
+  border: 1px solid var(--color-danger-300);
+  border-radius: var(--radius-sm);
+  color: var(--color-danger-300);
+  background: var(--color-danger-surface);
+}
+
+.new-analysis-page__totals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.new-analysis-page__files {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.new-analysis-page__file {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-subtle);
+}
+
+.new-analysis-page__file > div {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.new-analysis-page__totals > div {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.new-analysis-page__totals strong {
+  font-size: var(--font-size-xl);
+}
+
+.new-analysis-page__table-wrapper {
+  overflow-x: auto;
+}
+
+.new-analysis-page__transaction-sections,
+.new-analysis-page__transaction-section {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.new-analysis-page__transaction-section {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.new-analysis-page__transaction-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.new-analysis-page__transaction-heading > div {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.new-analysis-page__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.new-analysis-page__table th,
+.new-analysis-page__table td {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.new-analysis-page__table th {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.new-analysis-page__table th:last-child,
+.new-analysis-page__table td:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.new-analysis-page__amount--credit { color: var(--color-primary-300); }
+.new-analysis-page__amount--debit { color: var(--color-danger-300); }
+
+.new-analysis-page__actions {
+  justify-content: flex-end;
+}
+
+@media (max-width: 680px) {
+  .new-analysis-page__period,
+  .new-analysis-page__totals {
+    grid-template-columns: 1fr;
+  }
+
+  .new-analysis-page__file-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .new-analysis-page__file-button {
+    justify-content: center;
+  }
+}

@@ -1,25 +1,32 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
-import { Button, Icon, Text } from '../design-system';
+import { getMonthlyAnalyses } from '../../application/monthly-analyses';
+import type { MonthlyAnalysis } from '../../domain/monthly-analysis';
+import { getMonthName } from '../../utils/date';
+import { Icon, Text } from '../design-system';
 import './app-layout.css';
-
-interface AnalysisMonthNavigationItem {
-  label: string;
-  slug: string;
-}
-
-interface AnalysisYearNavigationSection {
-  months: readonly AnalysisMonthNavigationItem[];
-  year: number;
-}
-
-const analysisSections: readonly AnalysisYearNavigationSection[] = [];
 
 function navigationClassName({ isActive }: { isActive: boolean }) {
   return `app-layout__nav-link${isActive ? ' app-layout__nav-link--active' : ''}`;
 }
 
 export function AppLayout() {
+  const location = useLocation();
+  const [analyses, setAnalyses] = useState<MonthlyAnalysis[]>([]);
+
+  useEffect(() => {
+    void getMonthlyAnalyses().then(setAnalyses);
+  }, [location.pathname]);
+
+  const analysisSections = Object.entries(
+    analyses.reduce<Record<string, MonthlyAnalysis[]>>((sections, analysis) => {
+      const year = analysis.period.slice(0, 4);
+      sections[year] = [...(sections[year] ?? []), analysis];
+      return sections;
+    }, {}),
+  );
+
   return (
     <div className="app-layout">
       <aside className="app-layout__sidebar">
@@ -40,7 +47,7 @@ export function AppLayout() {
 
           <div className="app-layout__periods">
             <Text as="span" variant="caption">Análises mensais</Text>
-            {analysisSections.map(({ months, year }) => (
+            {analysisSections.map(([year, yearAnalyses]) => (
               <section
                 aria-labelledby={`analysis-year-${year}`}
                 className="app-layout__year-section"
@@ -48,13 +55,13 @@ export function AppLayout() {
               >
                 <Text as="span" id={`analysis-year-${year}`}>{year}</Text>
                 <div className="app-layout__months">
-                  {months.map(({ label, slug }) => (
+                  {yearAnalyses.map((analysis) => (
                     <NavLink
                       className={navigationClassName}
-                      key={slug}
-                      to={`/analises/${year}/${slug}`}
+                      key={analysis.id}
+                      to={`/analises/${analysis.id}`}
                     >
-                      {label}
+                      {getMonthName(Number(analysis.period.slice(5)))}
                     </NavLink>
                   ))}
                 </div>
@@ -64,11 +71,11 @@ export function AppLayout() {
         </nav>
 
         <div className="app-layout__action">
-          <Button disabled title="Disponível em breve">
+          <NavLink className="app-layout__new-analysis" to="/analises/nova">
             <Icon name="add" size="sm" />
             Nova análise
-          </Button>
-          <Text as="small" variant="caption">Novo fluxo em breve</Text>
+          </NavLink>
+          <Text as="small" variant="caption">Importar movimentações</Text>
         </div>
       </aside>
 
